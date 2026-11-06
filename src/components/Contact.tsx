@@ -43,11 +43,29 @@ function GitHubIcon() {
   );
 }
 
+function GmailIcon() {
+  return (
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
+      <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" stroke="#5C6E3A" strokeWidth="1.8" />
+      <path d="M22 6l-10 7L2 6" stroke="#5C6E3A" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" />
+    </svg>
+  );
+}
+
 export default function Contact() {
   const [copied, setCopied] = useState(false);
+  const [modalOpen, setModalOpen] = useState(false);
+
+  const email = "sbniraj2006@gmail.com";
+  const subject = "Software Engineering Opportunity - Niraj SB";
+  const body = "Hi Niraj,\n\nI came across your portfolio and would like to connect regarding an opportunity.\n\nBest regards,";
+
+  const gmailUrl = `https://mail.google.com/mail/?view=cm&fs=1&to=${encodeURIComponent(email)}&su=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+  const outlookUrl = `https://outlook.live.com/mail/0/deeplink/compose?to=${encodeURIComponent(email)}&subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+  const mailtoUrl = `mailto:${email}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
 
   const copyEmail = () => {
-    navigator.clipboard.writeText("sbniraj2006@gmail.com");
+    navigator.clipboard.writeText(email);
     setCopied(true);
     setTimeout(() => setCopied(false), 2500);
   };
@@ -89,18 +107,18 @@ export default function Contact() {
                 <span className="text-[#5C6E3A]"><EmailIcon /></span>
                 <div>
                   <p className="text-xs font-semibold uppercase text-[#6B6B6B]">Email</p>
-                  <a
-                    href="mailto:sbniraj2006@gmail.com"
-                    className="text-sm font-medium text-[#1C1C1C] hover:text-[#5C6E3A] transition-colors"
+                  <button
+                    onClick={() => setModalOpen(true)}
+                    className="text-sm font-medium text-[#1C1C1C] hover:text-[#5C6E3A] transition-colors text-left cursor-pointer"
                   >
-                    sbniraj2006@gmail.com
-                  </a>
+                    {email}
+                  </button>
                 </div>
               </div>
               <button
                 onClick={copyEmail}
                 type="button"
-                className="px-3 py-1 text-xs font-medium border border-[#1C1C1C] text-[#1C1C1C] hover:bg-[#1C1C1C] hover:text-[#F7F5F0] transition-colors rounded-sm flex-shrink-0"
+                className="px-3 py-1 text-xs font-medium border border-[#1C1C1C] text-[#1C1C1C] hover:bg-[#1C1C1C] hover:text-[#F7F5F0] transition-colors rounded-sm flex-shrink-0 cursor-pointer"
               >
                 {copied ? "Copied!" : "Copy"}
               </button>
@@ -132,7 +150,7 @@ export default function Contact() {
             </div>
           </div>
 
-          {/* Professional profiles */}
+          {/* Professional profiles & Quick Action */}
           <div className="bg-[#EFEDE8] border border-[#E0DDD7] p-8 rounded-sm flex flex-col justify-between gap-6">
             <div>
               <h3 className="text-xs font-bold tracking-widest uppercase text-[#5C6E3A] mb-6">
@@ -179,17 +197,135 @@ export default function Contact() {
             </div>
 
             {/* Quick Action */}
-            <div className="pt-4 border-t border-[#E0DDD7]">
-              <a
-                href="mailto:sbniraj2006@gmail.com?subject=Software%20Engineering%20Opportunity%20-%20Niraj%20SB"
-                className="inline-block w-full text-center py-3 bg-[#5C6E3A] text-[#F7F5F0] text-sm font-semibold hover:bg-[#4a5a2e] transition-colors rounded-sm"
+            <div className="pt-4 border-t border-[#E0DDD7] flex flex-col sm:flex-row gap-3">
+              <button
+                onClick={() => setModalOpen(true)}
+                type="button"
+                className="flex-1 text-center py-3 bg-[#5C6E3A] text-[#F7F5F0] text-sm font-semibold hover:bg-[#4a5a2e] transition-colors rounded-sm cursor-pointer"
               >
                 Send an Email Message
+              </button>
+              <a
+                href={gmailUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="px-4 py-3 border border-[#1C1C1C] text-[#1C1C1C] text-sm font-semibold hover:bg-[#1C1C1C] hover:text-[#F7F5F0] transition-colors rounded-sm text-center"
+                title="Directly compose email in Gmail web"
+              >
+                Open Gmail ↗
               </a>
             </div>
           </div>
         </div>
       </div>
+
+      {/* Compose Email Modal */}
+      {modalOpen && (
+        <div
+          className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/50 backdrop-blur-xs"
+          onClick={() => setModalOpen(false)}
+        >
+          <div
+            className="bg-[#F7F5F0] border border-[#E0DDD7] p-6 md:p-8 rounded-sm max-w-md w-full shadow-xl"
+            onClick={(e) => e.stopPropagation()}
+          >
+            <div className="flex items-start justify-between gap-4 mb-4">
+              <div>
+                <p className="text-xs font-semibold tracking-wider uppercase text-[#5C6E3A] mb-1">
+                  Compose Email
+                </p>
+                <h3
+                  className="text-2xl font-bold text-[#1C1C1C]"
+                  style={{ fontFamily: "var(--font-playfair), Georgia, serif" }}
+                >
+                  Contact Niraj SB
+                </h3>
+              </div>
+              <button
+                onClick={() => setModalOpen(false)}
+                className="text-[#6B6B6B] hover:text-[#1C1C1C] text-xl font-bold p-1 cursor-pointer"
+                aria-label="Close"
+              >
+                ✕
+              </button>
+            </div>
+
+            <p className="text-xs md:text-sm text-[#4A4A4A] mb-6 leading-relaxed">
+              Choose your preferred method to send an email to{" "}
+              <strong className="text-[#1C1C1C]">sbniraj2006@gmail.com</strong>:
+            </p>
+
+            <div className="flex flex-col gap-3">
+              {/* Option 1: Gmail Web */}
+              <a
+                href={gmailUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                onClick={() => setModalOpen(false)}
+                className="flex items-center justify-between p-3.5 bg-[#EFEDE8] border border-[#E0DDD7] hover:border-[#5C6E3A] transition-all rounded-sm group"
+              >
+                <div className="flex items-center gap-3">
+                  <GmailIcon />
+                  <div className="text-left">
+                    <p className="text-sm font-semibold text-[#1C1C1C] group-hover:text-[#5C6E3A]">
+                      Open in Gmail (Web)
+                    </p>
+                    <p className="text-[11px] text-[#6B6B6B]">Recommended for browser users</p>
+                  </div>
+                </div>
+                <span className="text-xs text-[#5C6E3A] font-bold">↗</span>
+              </a>
+
+              {/* Option 2: Outlook Web */}
+              <a
+                href={outlookUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                onClick={() => setModalOpen(false)}
+                className="flex items-center justify-between p-3.5 bg-[#EFEDE8] border border-[#E0DDD7] hover:border-[#5C6E3A] transition-all rounded-sm group"
+              >
+                <div className="flex items-center gap-3">
+                  <EmailIcon />
+                  <div className="text-left">
+                    <p className="text-sm font-semibold text-[#1C1C1C] group-hover:text-[#5C6E3A]">
+                      Open in Outlook (Web)
+                    </p>
+                    <p className="text-[11px] text-[#6B6B6B]">For Hotmail / Microsoft 365</p>
+                  </div>
+                </div>
+                <span className="text-xs text-[#5C6E3A] font-bold">↗</span>
+              </a>
+
+              {/* Option 3: Default App */}
+              <a
+                href={mailtoUrl}
+                onClick={() => setModalOpen(false)}
+                className="flex items-center justify-between p-3.5 bg-[#EFEDE8] border border-[#E0DDD7] hover:border-[#5C6E3A] transition-all rounded-sm group"
+              >
+                <div className="flex items-center gap-3">
+                  <span className="text-[#5C6E3A]"><EmailIcon /></span>
+                  <div className="text-left">
+                    <p className="text-sm font-semibold text-[#1C1C1C] group-hover:text-[#5C6E3A]">
+                      Default Mail Application
+                    </p>
+                    <p className="text-[11px] text-[#6B6B6B]">Apple Mail, Outlook Desktop, Thunderbird</p>
+                  </div>
+                </div>
+                <span className="text-xs text-[#5C6E3A] font-bold">↗</span>
+              </a>
+
+              {/* Option 4: Copy to Clipboard */}
+              <button
+                type="button"
+                onClick={copyEmail}
+                className="w-full text-center py-2.5 mt-2 border border-[#1C1C1C] text-[#1C1C1C] text-xs font-semibold hover:bg-[#1C1C1C] hover:text-[#F7F5F0] transition-colors rounded-sm cursor-pointer"
+              >
+                {copied ? "✓ Email Address Copied to Clipboard!" : "Copy Email Address (sbniraj2006@gmail.com)"}
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
     </section>
   );
 }
