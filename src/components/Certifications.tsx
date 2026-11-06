@@ -3,7 +3,6 @@ interface Certification {
   issuer: string;
   category: string;
   status: string;
-  url?: string;
 }
 
 const certifications: Certification[] = [
@@ -12,28 +11,24 @@ const certifications: Certification[] = [
     issuer: "LinkedIn Learning",
     category: "Algorithms & Data Structures",
     status: "Verified Credential",
-    url: "https://www.linkedin.com/in/niraj-s-b-48a9222a2/details/certifications/",
   },
   {
     name: "SQL Essential Training",
     issuer: "LinkedIn Learning",
     category: "Database & Query Optimization",
     status: "Verified Credential",
-    url: "https://www.linkedin.com/in/niraj-s-b-48a9222a2/details/certifications/",
   },
   {
     name: "Java: Advanced Concepts",
     issuer: "LinkedIn Learning",
     category: "Object-Oriented Programming",
     status: "Verified Credential",
-    url: "https://www.linkedin.com/in/niraj-s-b-48a9222a2/details/certifications/",
   },
   {
     name: "Communicating with Confidence",
     issuer: "LinkedIn Learning",
     category: "Professional Development & Leadership",
     status: "Verified Credential",
-    url: "https://www.linkedin.com/in/niraj-s-b-48a9222a2/details/certifications/",
   },
 ];
 
@@ -84,18 +79,6 @@ export default function Certifications() {
                   Focus: {cert.category}
                 </p>
               </div>
-
-              {cert.url && (
-                <a
-                  href={cert.url}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-flex items-center gap-1 text-xs font-semibold text-[#5C6E3A] hover:text-[#4a5a2e] transition-colors pt-3 border-t border-[#E0DDD7]"
-                >
-                  View Credential on LinkedIn
-                  <span aria-hidden="true">↗</span>
-                </a>
-              )}
             </div>
           ))}
         </div>
