@@ -99,8 +99,8 @@ export default function Nav() {
               </a>
             ))}
             <a
-              href="/Portfolio/resume.pdf"
-              download
+              href="/Portfolio/Resume_Niraj_SB.pdf"
+              download="Resume_Niraj_SB.pdf"
               className="ml-2 px-4 py-1.5 text-sm font-medium border border-[#1C1C1C] text-[#1C1C1C] hover:bg-[#1C1C1C] hover:text-[#F7F5F0] transition-colors rounded-sm"
             >
               Resume ↓

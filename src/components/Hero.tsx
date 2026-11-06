@@ -54,8 +54,8 @@ export default function Hero() {
               View Projects
             </a>
             <a
-              href="/Portfolio/resume.pdf"
-              download
+              href="/Portfolio/Resume_Niraj_SB.pdf"
+              download="Resume_Niraj_SB.pdf"
               className="px-6 py-3 border border-[#1C1C1C] text-[#1C1C1C] text-sm font-semibold hover:bg-[#1C1C1C] hover:text-[#F7F5F0] transition-colors rounded-sm"
             >
               Download Resume
