@@ -47,7 +47,7 @@ export default function Experience() {
                 <p className="text-sm text-[#6B6B6B] font-medium">
                   June 2025 – July 2025
                 </p>
-                <p className="text-sm text-[#6B6B6B]">Remote</p>
+                <p className="text-sm text-[#6B6B6B]">Chennai, India</p>
               </div>
             </div>
 
