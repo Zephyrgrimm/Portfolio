@@ -148,8 +148,11 @@ export default function Contact() {
                 >
                   <div className="flex items-center gap-3">
                     <span className="text-[#5C6E3A]"><LinkedInIcon /></span>
-                    <span className="text-sm font-medium text-[#1C1C1C] group-hover:text-[#5C6E3A] transition-colors">
-                      linkedin.com/in/niraj-s-b-48a9222a2
+                    <span className="text-sm font-semibold text-[#1C1C1C] group-hover:text-[#5C6E3A] transition-colors">
+                      LinkedIn
+                    </span>
+                    <span className="text-xs text-[#6B6B6B]">
+                      (niraj-s-b-48a9222a2)
                     </span>
                   </div>
                   <span className="text-xs text-[#5C6E3A]">↗</span>
@@ -163,8 +166,11 @@ export default function Contact() {
                 >
                   <div className="flex items-center gap-3">
                     <span className="text-[#5C6E3A]"><GitHubIcon /></span>
-                    <span className="text-sm font-medium text-[#1C1C1C] group-hover:text-[#5C6E3A] transition-colors">
-                      github.com/Zephyrgrimm
+                    <span className="text-sm font-semibold text-[#1C1C1C] group-hover:text-[#5C6E3A] transition-colors">
+                      GitHub
+                    </span>
+                    <span className="text-xs text-[#6B6B6B]">
+                      (@Zephyrgrimm)
                     </span>
                   </div>
                   <span className="text-xs text-[#5C6E3A]">↗</span>
